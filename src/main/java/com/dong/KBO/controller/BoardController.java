@@ -25,6 +25,7 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
+    //게시글 수정
     @PostMapping("/modify")
     public String modify(Integer page, Integer pageSize, BoardDto boardDto, Model m, HttpSession session, RedirectAttributes rattr) {
         String writer = (String)session.getAttribute("id");
@@ -57,6 +58,7 @@ public class BoardController {
         return "board";
     }
 
+    //게시글 작성
     @PostMapping("/write")
     public String write(BoardDto boardDto, RedirectAttributes rattr, Model m, HttpSession session) {
         String writer = (String)session.getAttribute("id");

@@ -18,12 +18,6 @@ public class CommentController {
     @Autowired
     CommentService commentservice;
 
-    public void rank() {
-
-    }
-
-
-
 //    {
 //        "pcno":0,
 //            "comment" : "hihihi"
@@ -53,6 +47,7 @@ public class CommentController {
 //        "pcno":0,
 //            "comment" : "hihihi"
 //    }
+
     // 댓글을 등록하는 메서드
     @PostMapping("/comments") // /kbo/comments?bno=1085 post, Content-Type  application/json
     public ResponseEntity<String> write(@RequestBody CommentDto dto, Integer bno, HttpSession session) {
@@ -95,32 +90,6 @@ public class CommentController {
         }
     }
 
-
-    //지정된 게시물의 모든 댓글을 가져오는 메서드
-//    @GetMapping("/comments") // /comments?bno=1080 GET
-//    public String list(@ModelAttribute SearchCondition sc, Model m, HttpServletRequest request, Integer bno) {
-//        List<CommentDto> list = null;
-//
-//        try {
-//            int totalCnt = commentservice.getCount(bno);
-//            m.addAttribute("totalCnt", totalCnt);
-//
-//            PageHandler pageHandler = new PageHandler(totalCnt, sc);
-//
-//            list = commentservice.getList(bno);
-//            m.addAttribute("list", list);
-//            m.addAttribute("ph", pageHandler);
-//
-//            System.out.println("list = " + list);
-//            System.out.println("totalCnt = " + totalCnt);
-////            return new ResponseEntity<List<CommentDto>>(list, HttpStatus.OK); //200
-//        } catch (Exception e) {
-//            e.printStackTrace();
-////            return new ResponseEntity<List<CommentDto>>(HttpStatus.BAD_REQUEST); //400
-//        }
-//        return "board";
-//    }
-
     //지정된 게시물의 모든 댓글을 가져오는 메서드
     @GetMapping("/comments") // /comments?bno=1080 GET
 //    @CrossOrigin(origins = "*", methods = RequestMethod.GET)
@@ -130,7 +99,7 @@ public class CommentController {
         try {
             list = commentservice.getList(bno);
 
-//            System.out.println("list = " + list);
+            System.out.println("list = " + list);
             return new ResponseEntity<List<CommentDto>>(list, HttpStatus.OK); //200
         } catch (Exception e) {
             e.printStackTrace();
