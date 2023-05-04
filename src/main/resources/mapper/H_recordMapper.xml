@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dong.KBO.dao.H_recordMapper">
+    <select id="selectAll" resultType="H_recordDto" resultMap="kbo_hitter_rank">
+        SELECT hitter_rank,  bno, player_name, team_name, h_avg, game_count, plate_a, hit, double_hit, triple_hit, hr, run_batted_in, runs, steal, four_ball, strike_out, on_base_per, slugging_per
+        FROM kbo_hitter_rank
+        ORDER BY hitter_rank
+    </select>
+
+    <select id="select" parameterType="int" resultType="H_recordDto" resultMap="kbo_hitter_rank">
+        SELECT hitter_rank,  bno, player_name, team_name, h_avg, game_count, plate_a, hit, double_hit, triple_hit, hr, run_batted_in, runs, steal, four_ball, strike_out, on_base_per, slugging_per
+        FROM kbo_hitter_rank
+        WHERE hitter_rank = #{hitter_rank}
+    </select>
+
+<!--    ////////-->
+
+    <delete id="deleteAll">
+        DELETE FROM kbo_hitter_rank
+    </delete>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM kbo_hitter_rank WHERE player_name = #{player_name}
+    </delete>
+
+    <update id="update" parameterType="H_recordDto">
+        UPDATE kbo_hitter_rank
+        SET hitter_rank = #{hitter_rank}
+            , bno = #{bno},
+            team_name = #{team_name},
+            h_avg = #{h_avg},
+            game_count = #{game_count},
+            plate_a = #{plate_a},
+            hit = #{hit},
+            double_hit = #{double_hit},
+            triple_hit = #{triple_hit},
+            hr = #{hr},
+            run_batted_in = #{run_batted_in},
+            runs = #{runs},
+            steal = #{steal},
+            four_ball = #{four_ball},
+            strike_out = #{strike_out},
+            on_base_per = #{on_base_per},
+            slugging_per = #{slugging_per}
+        WHERE player_name = #{player_name}
+    </update>
+
+    <insert id="insert" parameterType="H_recordDto">
+        insert into kbo_hitter_rank
+            (hitter_rank,  bno, player_name, team_name, h_avg, game_count, plate_a, hit, double_hit, triple_hit, hr, run_batted_in, runs, steal, four_ball, strike_out, on_base_per, slugging_per)
+        values
+            (#{hitter_rank}, #{bno}, #{player_name}, #{team_name}, #{h_avg}, #{game_count}, #{plate_a}, #{hit}, #{double_hit}, #{triple_hit}, #{hr}, #{run_batted_in}, #{runs}, #{steal}, #{four_ball}, #{strike_out}, #{on_base_per}, #{slugging_per})
+    </insert>
+
+
+
+    <resultMap type="com.dong.KBO.domain.H_recordDto" id="kbo_hitter_rank">
+        <result property="content" column="content"/>
+    </resultMap>
+</mapper>

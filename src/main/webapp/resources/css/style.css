@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap');
+
+* {
+    margin:0;   /* 마진 리셋 */
+    padding:0;   /* 패딩 리셋 */
+}
+a {
+    text-decoration:none;  /* 텍스트 링크 밑줄 없애기 */
+}
+ul {
+    list-style: none;
+}
+
+#container {
+    height: 100px;
+    margin: auto;  /* 화면 중앙에 배치 */
+    width: 1200px;    /* 너비 */
+}
+
+/*********************************/
+/* 헤더 영역 - 로고와 내비게이션 */
+/*********************************/
+
+header{
+    width:100%;    /*  너비 */
+    height:100px;   /* 높이 */
+    background-color: white;
+    color: white;
+}
+
+
+/* 로고 */
+#logo{
+    float:left;   /* 왼쪽으로 플로팅 */
+    width:300px;   /*  너비 */
+    height:100px;   /* 높이 */
+    line-height:100px;  /* 세로로 중간에 맞춤 - 줄간격을 높이 값과 같게 */
+    padding:20px 20px;  /* 왼쪽에 여백 */
+}
+#logo h1 {
+    font-family:'Merienda', cursive;
+    font-weight:700;
+    font-size:40px;   /* 글자 크기 */
+    color:black;   /* 글자 색*/
+    text-shadow:0 -1px 0 #222;  /* 그림자 색 */
+}
+
+/* 내비게이션 */
+nav{
+    float:right;   /* 오른쪽으로 플로팅 */
+    width:850px;   /*   너비 */
+    height:100px;   /* 메뉴 영역 높이 */
+    padding-top:40px;  /* 메뉴를 아래로 내리기 위해 */
+}
+#topMenu {
+    height:100px;
+}
+#topMenu > li {
+    float:left;  /* 메뉴 항목을 왼쪽으로 플로팅 */
+    position: relative;  /* 서브 메뉴를 absolute로 하기 위해, 이 부분을 relative로 */
+}
+#topMenu > li > a{
+    display:block;  /* 링크 텍스트는 블록으로 */
+    color:black;  /* 글자 색 */
+    font-weight:600;  /* 글자 굵기 */
+    font-size: 20px;
+    text-shadow:0 1px #07c;  /* 그림자 추가 */
+    padding:20px 20px;  /* 패딩 */
+}
+#topMenu > li > a > span {
+    font-size : 0.5em;   /* 서브 메뉴가 있는 항목에 화살표 표시 */
+}
+#topMenu > li > a:hover {
+    color:rgb(86, 59, 182);  /* 마우스 오버하면 색상 바뀜 */
+    text-shadow:0 -1px #07c;  /* 글자가 너무 굵어지지 않도록 */
+}
+
+#topMenu > li > ul { /* 서브 메뉴 스타일 */
+    display: none;  /* 서브 메뉴 처음에는 화면에 안 보이게 */
+    position:absolute;  /* 서브 메뉴 포지셔닝 */
+    width:160px;
+    /*background:rgba(184, 181, 181, 0.6);  !* 슬라이드 쇼 비치도록 배경 색 조절 *!*/
+    left:20px;
+    margin:0;
+}
+#topMenu > li > ul > li {
+    padding:10px 10px 10px 30px;   /* 서브 메뉴 항목 */
+}
+#topMenu > li > ul > li > a {
+    font-size:14px;
+    padding:10px;
+    color:#000;
+}
+#topMenu > li:hover > ul {
+    display: block;  /* 메인 메뉴 항목 위로 오버하면 서브 메뉴 표시 */
+    z-index:10;  /* 슬라이드 쇼에 가리지 않게 조절 */
+}
+#topMenu > li > ul > li > a:hover {
+    color:rgb(65, 53, 177);  /* 서브 메뉴 마우스 오버하면 색상 바뀜 */
+}
+
+/********************************/
+/*   개인 랭킹 순위 영역    */
+/********************************/
+
+#top_pitcher_rank_Table {
+    clear:both;   /* 플로팅 해제 */
+    width:1200px;    /* 너비 */
+    height:50%;   /* 높이 */
+    overflow:hidden;   /* 영역 넘치면 감춤 */
+    position: relative;
+    margin-top: 50px;
+    margin-left: 300px
+}
+
+#top_pitcher_rank > img {
+    width:100%;  /* 너비 */
+    float:left;  /* 가로로 배치 */
+}
+
+/**************************************/
+/*   콘텐츠 영역  - 탭 메뉴와 퀵 링크 */
+/**************************************/
+
+/*팀순위 표 메뉴*/
+#teamRank {
+    float: left;
+    width: 1200px;
+    height: 300px;
+    margin: 50px 50px;
+}
+
+/* 개인 순위 표 메뉴 */
+#personalRank{
+    width: 100%;
+    height: 1000px;
+    margin-left: 100px;
+    padding: 200px;
+}
+
+#personalRank table {
+    padding: 200px 200px;
+}
+
+/* 게시글 영역 */
+#writing {
+    width: 100%;
+    height: 1000px;
+    margin-left: 50px;
+}
+#writing button {
+    size: 200px;
+}
+
+table {
+    border:1px solid black;
+    border-collapse:collapse;
+    caption-side:bottom;
+
+}
+td, th {
+    border:1px solid black;
+    padding:10px;
+    width:300px;
+    text-align: center;
+}
+.heading {
+    background:rgb(224, 223, 223);
+}
+
+#contents{
+    width:100%;   /* 너비 */
+    height:1000px;  /* 높이 */
+    margin-top:20px;  /* 마진 추가 */
+}
+
+/* 탭 메뉴 */
+#tabMenu{
+    float:left;  /* 왼쪽으로 플로팅 */
+    width:250px;   /* 너비 */
+    height:100%;   /* 높이 */
+    margin-top:10px;  /* 탭 메뉴 위쪽에 여백 두기 */
+}
+
+#tabMenu  input[type="radio"] {
+    display:none;  /* 라디오 버튼 감춤 */
+}
+#tabMenu label {  /* 탭 제목 스타일 */
+    display:inline-block;  /* 탭들을 가로로 배치 */
+    margin:0 0;  /* 마진 */
+    padding:15px 25px;  /* 패딩 */
+    font-weight:600;   /* 글자 굵기 */
+    text-align: center;   /* 글자 정렬 */
+    color:#aaa;  /* 글자 색 */
+    border:1px solid transparent;  /* 테두리 */
+}
+#tabMenu label:hover {  /* 마우스 오버했을 때 탭 제목 스타일 */
+    color:#222;
+    cursor:pointer;
+}
+#tabMenu input:checked + label {  /* 활성화된 탭 제목 스타일 */
+    color:#b00;
+    border:1px solid #ddd;
+    background-color: #eee;
+}
+
+.tabContent {  /* 탭 내용 스타일 */
+    display:none;
+    padding:20px 0 0;
+    border-top:1px solid #ddd;
+}
+.tabContent h2{
+    display:none;
+}
+
+#notice ul {
+    list-style: disc;
+    margin-left:30px;
+}
+#notice ul li {
+    font-size:16px;
+    line-height:2.5;
+}
+#gallery ul li{
+    display:inline;  /* 이미지 가로로 배치 */
+}
+
+#tab1:checked ~ #notice,
+#tab2:checked ~ #gallery {
+    display:block;
+}
+
+/* 퀵 링크 */
+#links{
+    float:right;   /* 오른쪽으로 플로팅 */
+    width:600px;   /* 너비 */
+    height:100%;   /* 높이 */
+    margin-top:20px;  /* 마진 추가 */
+}
+#links ul{
+    padding:0;  /* 패딩 */
+    overflow: hidden;  /* 넘치는 것은 감춤 */
+}
+#links ul li{
+    float:left;  /* 가로로 배치 */
+    width:33%;  /* 1/3 크기만큼씩 */
+    text-align:center;  /* 가운데 정렬 */
+    margin:10px 0;  /* 마진 */
+}
+
+#links ul li a span{
+    display:block;  /* 블록 레벨로 */
+    margin:0 auto;  /* 가운데 배치 */
+    width:150px;  /* 가로 크기 */
+    height:150px;  /* 세로 크기 */
+    border-radius:100%;  /* 테두리 둥글게. border-radius: 150px로 해도 됨 */
+    border:1px solid #ddd;  /* 테두리 스타일 */
+    line-height:150px;  /* 수직으로 중간에 오게 */
+}
+
+#links ul li a p {
+    margin-top:15px;  /* 위쪽 마진 */
+    font-weight:600;  /* 글자 굵기 */
+    color:#666;  /* 글자 색 */
+}
+
+/******************/
+/*  게시판 영역  */
+/******************/
+
+#paging {
+    color: black;
+    width: 100%;
+    align-items: center;
+}
+
+.paging-container {
+    width:100%;
+    height: 70px;
+    display: flex;
+    margin-top: 50px;
+    margin : auto;
+}
+
+/******************/
+/*   푸터 영역    */
+/******************/
+
+footer{
+    width:100%;   /* 너비 */
+    height:100px;  /* 높이 */
+    border-top:2px solid #222;
+    margin: auto;
+}
+#bottomMenu{
+    width:100%;
+    height:20px;
+    position:relative;
+}
+#bottomMenu ul {
+    margin-top:15px;
+}
+#bottomMenu ul li{
+    float:left;  /* 가로로 배치 */
+    padding:5px 20px;
+    border-right:1px solid #ddd;   /* 항목 오른쪽에 테두리 */
+}
+#bottomMenu ul li:last-child{
+    border:none;  /* 마지막 항목에는 오른쪽 테두리 없음 */
+}
+#bottomMenu ul li a, #bottomMenu ul li a:visited {
+    font-size:15px;  /* 글자 크기 */
+    color:#666;   /* 글자 색 */
+}
+#sns {
+    position:absolute;
+    right:0;  /* 오른쪽 끝에 배치 */
+}
+#sns ul li{
+    border:none;  /* 테두리 없이 */
+    padding:5px;
+}
+#company{
+    clear:left;  /* 플로팅 해제. clear:both도 가능 */
+    margin-top:25px;  /* 위쪽 마진 */
+    margin-left:20px;  /* 왼쪽 마진 */
+}
+p {
+    font-size:14px;  /* 글자 크기 */
+    color:#aaa;    /* 글자 색*/
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dong.KBO.dao.P_recordMapper">
+    <select id="selectAll" resultType="P_recordDto" resultMap="kbo_pitcher_rank">
+        SELECT pitcher_rank, bno, player_name, team_name, e_r_a, game_count, inning, win_count, defeat_count, save_count, hold_count, kk_count, p_hit_count, p_homrun_count, p_score_count, fourball_count, hit_count, winning_rate
+        FROM kbo_pitcher_rank
+        ORDER BY pitcher_rank
+    </select>
+
+    <select id="select" parameterType="int" resultType="P_recordDto" resultMap="kbo_pitcher_rank">
+        SELECT pitcher_rank, bno, player_name, team_name, e_r_a, game_count, inning, win_count, defeat_count, save_count, hold_count, kk_count, p_hit_count, p_homrun_count, p_score_count, fourball_count, hit_count, winning_rate
+        FROM kbo_pitcher_rank
+        WHERE pitcher_rank = #{pitcher_rank}
+    </select>
+
+    <delete id="deleteAll">
+        DELETE FROM kbo_pitcher_rank
+    </delete>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM kbo_pitcher_rank WHERE player_name = #{player_name}
+    </delete>
+
+    <update id="update" parameterType="P_recordDto">
+        UPDATE kbo_pitcher_rank
+        SET pitcher_rank = #{pitcher_rank},
+            bno = #{bno},
+            team_name = #{team_name},
+            e_r_a = #{e_r_a},
+            game_count = #{game_count},
+            inning = #{inning},
+            win_count = #{win_count},
+            defeat_count = #{defeat_count},
+            save_count = #{save_count},
+            hold_count = #{hold_count},
+            kk_count = #{kk_count},
+            p_hit_count = #{p_hit_count},
+            p_homrun_count = #{p_homrun_count},
+            p_score_count = #{p_score_count},
+            fourball_count = #{fourball_count},
+            hit_count = #{hit_count},
+            winning_rate = #{winning_rate}
+        WHERE player_name = #{player_name}
+    </update>
+
+    <insert id="insert" parameterType="P_recordDto">
+        insert into kbo_pitcher_rank
+            (pitcher_rank, bno, player_name, team_name, e_r_a, game_count, inning, win_count, defeat_count, save_count, hold_count, kk_count, p_hit_count, p_homrun_count, p_score_count, fourball_count, hit_count, winning_rate)
+        values
+            (#{pitcher_rank}, #{bno}, #{player_name}, #{team_name}, #{e_r_a}, #{game_count}, #{inning}, #{win_count}, #{defeat_count}, #{save_count}, #{hold_count}, #{kk_count}, #{p_hit_count}, #{p_homrun_count}, #{p_score_count}, #{fourball_count}, #{hit_count}, #{winning_rate} )
+    </insert>
+
+    <resultMap type="com.dong.KBO.domain.P_recordDto" id="kbo_pitcher_rank">
+        <result property="content" column="content"/>
+    </resultMap>
+</mapper>

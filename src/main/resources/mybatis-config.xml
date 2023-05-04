@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="BoardDto" type="com.dong.KBO.domain.BoardDto"/>
+        <typeAlias alias="CommentDto" type="com.dong.KBO.domain.CommentDto"/>
+        <typeAlias alias="TeamRankDto" type="com.dong.KBO.domain.TeamRankDto"/>
+        <typeAlias alias="P_recordDto" type="com.dong.KBO.domain.P_recordDto"/>
+        <typeAlias alias="H_recordDto" type="com.dong.KBO.domain.H_recordDto"/>
+        <typeAlias alias="SearchCondition" type="com.dong.KBO.domain.SearchCondition"/>
+    </typeAliases>
+</configuration>
