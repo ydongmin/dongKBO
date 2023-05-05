@@ -72,9 +72,6 @@ public class CommentController {
     public ResponseEntity<String> remove(@PathVariable Integer cno, Integer bno, HttpSession session) {
         String commenter = (String)session.getAttribute("id");
 
-//        HttpHeaders resHeaders = new HttpHeaders();
-//        resHeaders.add("Content-Type", "application/json;charset=UTF-8");
-
         try {
             int rowCnt = commentservice.remove(cno, bno, commenter);
             System.out.println("cno = " + cno);
