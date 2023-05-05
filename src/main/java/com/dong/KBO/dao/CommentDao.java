@@ -1,5 +1,6 @@
 package com.dong.KBO.dao;
 
+import com.dong.KBO.domain.BoardDto;
 import com.dong.KBO.domain.CommentDto;
 import com.dong.KBO.domain.SearchCondition;
 
@@ -22,6 +23,7 @@ public interface CommentDao {
     int update(CommentDto dto) throws Exception;
 //    ************************
 
-    List<CommentDto> selectPage(Map map) throws Exception;
+    int searchResultCnt(SearchCondition sc) throws Exception;
+    List<CommentDto> searchSelectPage(SearchCondition sc) throws Exception;
 
 }

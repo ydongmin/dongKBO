@@ -23,6 +23,7 @@ public interface CommentService {
     int modify(CommentDto commentDto) throws Exception;
 
 //    ****************
+    int getSearchResultCnt(SearchCondition sc) throws Exception;
 
 
 }

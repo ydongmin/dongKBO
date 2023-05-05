@@ -54,9 +54,16 @@ public class CommentDaoImpl implements CommentDao {
     public int update(CommentDto dto) throws Exception {
         return session.update(namespace+"update", dto);
     }
+//    **********************************************
+    @Override
+    public List<CommentDto> searchSelectPage(SearchCondition sc) throws Exception {
+        return session.selectList(namespace+"searchSelectPage", sc);
+    }
 
     @Override
-    public List<CommentDto> selectPage(Map map) throws Exception {
-        return session.selectList(namespace+"selectPage", map);
+    public int searchResultCnt(SearchCondition sc) throws Exception {
+        System.out.println("sc in searchResultCnt() = " + sc);
+        System.out.println("session = " + session);
+        return session.selectOne(namespace+"searchResultCnt", sc);
     }
 }

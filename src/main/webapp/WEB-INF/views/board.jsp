@@ -91,25 +91,25 @@
         </li>
     </ul>
 </div>
-<%--    <div class="paging-container">--%>
+    <div class="paging-container">
 <%--        <div class="paging">--%>
-<%--            <c:if test="${commentService.getCount(bno) ==null || commentService.getCount(bno) ==0}">--%>
+<%--            <c:if test="${==null || requestScope.totalCnt==0}">--%>
 <%--                <div> 게시물이 없습니다. </div>--%>
 <%--            </c:if>--%>
-<%--            <c:if test="${commentService.getCount(bno)!=null && commentService.getCount(bno)!=0}">--%>
+<%--            <c:if test="${totalCnt!=null && totalCnt!=0}">--%>
 <%--                <c:if test="${ph.showPrev}">--%>
-<%--                    <a class="page" href="<c:url value="#"/>">&lt;</a>--%>
+<%--                    <a class="page" href="<c:url value="/board/list${ph.sc.getQueryString(ph.beginPage-1)}"/>">&lt;</a>--%>
 <%--                </c:if>--%>
 <%--                <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">--%>
-<%--                    <a class="page ${i==ph.sc.page? "paging-active" : ""}" href="<c:url value="#"/>">${i}</a>--%>
+<%--                    <a class="page ${i==ph.sc.page? "paging-active" : ""}" href="<c:url value="/board/list${ph.sc.getQueryString(i)}"/>">${i}</a>--%>
 <%--                </c:forEach>--%>
 <%--                <c:if test="${ph.showNext}">--%>
-<%--                    <a class="page" href="<c:url value="#"/>">&gt;</a>--%>
+<%--                    <a class="page" href="<c:url value="/board/list${ph.sc.getQueryString(ph.endPage+1)}"/>">&gt;</a>--%>
 <%--                </c:if>--%>
 <%--            </c:if>--%>
 <%--        </div>--%>
-<%--    </div>--%>
-    <div class="paging-container">
+    </div>
+<%--    <div class="paging-container">--%>
 <%--        <div class="paging">--%>
 <%--            <a class="page" href="#">&lt;</a>--%>
 <%--            <a class="page" href="#">1</a>--%>
@@ -124,7 +124,7 @@
 <%--            <a class="page" href="#">10</a>--%>
 <%--            <a class="page" href="#">&gt;</a>--%>
 <%--        </div>--%>
-    </div>
+<%--    </div>--%>
 <div id="comment-writebox">
     <div class="commenter commenter-writebox">${loginId}</div>
         <div class="comment-writebox-content">

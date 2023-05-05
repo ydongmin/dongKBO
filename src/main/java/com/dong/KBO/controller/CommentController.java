@@ -107,4 +107,29 @@ public class CommentController {
         }
     }
 
+//    @GetMapping("/comments") // /comments?bno=1080 GET
+////    @CrossOrigin(origins = "*", methods = RequestMethod.GET)
+//    public ResponseEntity<List<CommentDto>> list(Integer bno, SearchCondition sc, HttpServletRequest request) {
+//        List<CommentDto> list = null;
+//
+//        try {
+//            int totalCnt = commentservice.getSearchResultCnt(sc);
+//            request.setAttribute("totalCnt", totalCnt);
+//
+//            PageHandler pageHandler = new PageHandler(totalCnt, sc);
+//            request.setAttribute("ph", pageHandler);
+//
+//            list = commentservice.getList(bno);
+//
+//            System.out.println("list = " + list);
+//            return new ResponseEntity<List<CommentDto>>(list, HttpStatus.OK); //200
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return new ResponseEntity<List<CommentDto>>(HttpStatus.BAD_REQUEST); //400
+//        }
+//    }
+
+
+
+
 }

@@ -61,5 +61,10 @@ public class CommentServiceImpl implements CommentService {
     }
 
 //    ***************************
+
+    @Override
+    public int getSearchResultCnt(SearchCondition sc) throws Exception {
+        return commentDao.searchResultCnt(sc);
+    }
 }
 
