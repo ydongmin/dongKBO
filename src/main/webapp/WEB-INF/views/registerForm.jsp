@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
@@ -74,34 +75,47 @@
   <div id="msg" class="msg"><form:errors path="id"/></div>
   <label for="">아이디</label>
   <input class="input-field" type="text" name="id" placeholder="4~12자리의 영어">
+
   <label for="">비밀번호</label>
-  <input class="input-field" type="text" name="pwd" placeholder="8~12자리의 영대소문자와 숫자 조합">
+  <input class="input-field" type="password" name="pwd" placeholder="8~12자리의 영대소문자와 숫자 조합">
+
   <label for="">이름</label>
   <input class="input-field" type="text" name="name" placeholder="홍길동">
+
   <label for="">이메일</label>
   <input class="input-field" type="text" name="email" placeholder="example@fastcampus.co.kr">
-  <label for="">좋아하는 팀</label>
-  <select id="">
-    <option value="" selected>없음</option>
-    <option value="">SSG</option>
-    <option value="">두산</option>
-    <option value="">키움</option>
-    <option value="">KT</option>
-    <option value="">LG</option>
-    <option value="">한화</option>
-    <option value="">삼성</option>
-    <option value="">KIA</option>
-    <option value="">롯데</option>
-    <option value="">NC</option>
-  </select>
-
   <label for="">생일</label>
   <input class="input-field" type="text" name="birth" placeholder="2020-12-31">
+
   <div class="sns-chk">
-    <label><input type="checkbox" name="sns" value="facebook"/>페이스북</label>
-    <label><input type="checkbox" name="sns" value="kakaotalk"/>카카오톡</label>
-    <label><input type="checkbox" name="sns" value="instagram"/>인스타그램</label>
+  <label><input type="checkbox" name="sns" value="facebook"/>페이스북</label>
+  <label><input type="checkbox" name="sns" value="kakaotalk"/>카카오톡</label>
+  <label><input type="checkbox" name="sns" value="instagram"/>인스타그램</label>
   </div>
+    <jsp:useBean id="now" class="java.util.Date" />
+    <fmt:formatDate value="${reg_date}" pattern="yyyy-MM-dd HH:mm:ss" var="today" />
+
+  <label for="">좋아하는 팀</label>
+  <select id="" name="favorite_team">
+    <option name="favorite_team" value="null" selected>없음</option>
+    <option name="favorite_team" value="SSG">SSG</option>
+    <option name="favorite_team" value="두산">두산</option>
+    <option name="favorite_team" value=키움">키움</option>
+    <option name="favorite_team" value="KT">KT</option>
+    <option name="favorite_team" value="LG">LG</option>
+    <option name="favorite_team" value="한화">한화</option>
+    <option name="favorite_team" value="삼성">삼성</option>
+    <option name="favorite_team" value="KIA">KIA</option>
+    <option name="favorite_team" value="롯데">롯데</option>
+    <option name="favorite_team" value="NC">NC</option>
+  </select>
+
+
+
+
+
+
+
   <button>회원 가입</button>
 </form:form>
 <script>

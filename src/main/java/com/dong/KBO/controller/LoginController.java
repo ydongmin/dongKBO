@@ -2,6 +2,7 @@ package com.dong.KBO.controller;
 
 import com.dong.KBO.dao.UserDao;
 import com.dong.KBO.domain.User;
+import com.dong.KBO.service.UserSha256;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -80,7 +81,6 @@ public class LoginController {
             return false;
         }
 
-        return user!=null && user.getPwd().equals(pwd);
-//        return "asdf".equals(id) && "1234".equals(pwd);
+        return user!=null && user.getPwd().equals(UserSha256.encrypt(pwd));
     }
 }

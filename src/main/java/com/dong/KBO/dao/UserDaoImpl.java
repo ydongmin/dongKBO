@@ -64,7 +64,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public int insertUser(User user) throws Exception {
         int rowCnt = 0;
-        String sql = "INSERT INTO user_info VALUES (?,?,?,?,?,?,?, now()) ";
+        String sql = "INSERT INTO user_info VALUES (?,?,?,?,?,?, now(),?) ";
 
         try(
                 Connection conn = ds.getConnection();
@@ -74,12 +74,12 @@ public class UserDaoImpl implements UserDao {
             pstmt.setString(2, user.getPwd());
             pstmt.setString(3, user.getName());
             pstmt.setString(4, user.getEmail());
-            pstmt.setString(5, user.getFavorite_team());
-            pstmt.setDate(6, new java.sql.Date(user.getBirth().getTime()));
-            pstmt.setString(7, user.getSns());
-
+            pstmt.setDate(5, new java.sql.Date(user.getBirth().getTime()));
+            pstmt.setString(6, user.getSns());
+            pstmt.setString(7, user.getFavorite_team());
             return pstmt.executeUpdate();
         }
+
     }
 
     @Override
@@ -87,7 +87,7 @@ public class UserDaoImpl implements UserDao {
         int rowCnt = 0;
 
         String sql = "UPDATE user_info " +
-                "SET pwd = ?, name=?, email=?, birth =?, favorite_team=?, sns=?, reg_date=? " +
+                "SET pwd = ?, name=?, email=?, birth =?, favorite_team=?, sns=?, reg_date=?, favorite_team=? " +
                 "WHERE id = ? ";
 
         try (

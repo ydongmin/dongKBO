@@ -20,7 +20,9 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
+						/WEB-INF/spring/appServlet/security-context.xml
+			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -29,6 +31,23 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<!-- spring security필터-->
+<!--	<filter>-->
+<!--		<filter-name>springSecurityFilterChain</filter-name>-->
+<!--		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+<!--	</filter>-->
+<!--	<filter-mapping>-->
+<!--		<filter-name>springSecurityFilterChain</filter-name>-->
+<!--&lt;!&ndash;		<url-pattern>/*</url-pattern>&ndash;&gt;-->
+<!--		<url-pattern>/login/login</url-pattern>-->
+<!--	</filter-mapping>-->
+
+<!--	<context-param>-->
+<!--		<param-name>contextConfigLocation_security</param-name>-->
+<!--		<param-value>/WEB-INF/spring/security-context.xml</param-value>-->
+<!--	</context-param>-->
+
 	<!-- 한글 변환 필터 시작 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>

@@ -89,7 +89,6 @@ public class CommentController {
 
     //지정된 게시물의 모든 댓글을 가져오는 메서드
     @GetMapping("/comments") // /comments?bno=1080 GET
-//    @CrossOrigin(origins = "*", methods = RequestMethod.GET)
     public ResponseEntity<List<CommentDto>> list(Integer bno) {
         List<CommentDto> list = null;
 
