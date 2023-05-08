@@ -100,7 +100,7 @@ public class BoardController {
             if(rowCnt!=1) {
                 throw new Exception("board remove error");
             }
-            rattr.addFlashAttribute("msg", "DEL_OK"); //한글로 적으면 인코딩, 디코딩을 다 해줘야하기때문에 boardList.jsp확인
+            rattr.addFlashAttribute("msg", "DEL_OK");
         } catch (Exception e) {
             e.printStackTrace();
             rattr.addFlashAttribute("msg", "DEL_ERR");
@@ -115,7 +115,6 @@ public class BoardController {
         try {
             BoardDto boardDto =  boardService.read(bno);
             m.addAttribute(boardDto); //이름을 생략하면 타입의 맨앞글자만 소문자로 바꿔서 이름으로 사용
-
         } catch (Exception e) {
             e.printStackTrace();
             rattr.addFlashAttribute("msg", "READ_ERR");

@@ -92,8 +92,6 @@
   <label><input type="checkbox" name="sns" value="kakaotalk"/>카카오톡</label>
   <label><input type="checkbox" name="sns" value="instagram"/>인스타그램</label>
   </div>
-    <jsp:useBean id="now" class="java.util.Date" />
-    <fmt:formatDate value="${reg_date}" pattern="yyyy-MM-dd HH:mm:ss" var="today" />
 
   <label for="">좋아하는 팀</label>
   <select id="" name="favorite_team">
@@ -109,12 +107,6 @@
     <option name="favorite_team" value="롯데">롯데</option>
     <option name="favorite_team" value="NC">NC</option>
   </select>
-
-
-
-
-
-
 
   <button>회원 가입</button>
 </form:form>
@@ -138,6 +130,7 @@
 
     return true;
   }
+
   function setMessage(msg, element){
     document.getElementById("msg").innerHTML = `<i class="fa fa-exclamation-circle"> ${'${msg}'}</i>`;
     if(element) {

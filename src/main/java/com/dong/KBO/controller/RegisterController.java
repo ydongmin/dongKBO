@@ -61,17 +61,15 @@ public class RegisterController {
             // 2. DB에 신규회원 정보를 저장
 
             String encPassword = UserSha256.encrypt(user.getPwd()); // 비밀번호 암호화
-//            System.out.println("전 :" + encPassword);
             user.setPwd(encPassword);
-//            System.out.println("후 : " + user.getPwd());
             int rowCnt = userDao.insertUser(user);
 
                 request.setAttribute("msg", "가입신청이 완료되었습니다.");
                 request.setAttribute("url", "/KBO/login/login");
 
             if(rowCnt != FAIL) {
-//                return "redirect:/";
-                return "registerInfo";
+                return "redirect:/login/login";
+//                return "registerInfo";
             }
         }
 
