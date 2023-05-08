@@ -282,8 +282,9 @@
     });
 
         // **********************************************
-
+        <c:if test="${mode ne 'new'}">
         showList(${boardDto.bno});
+        </c:if>
 
         $("#btn-write-comment").click(function () {
             let comment = $("textarea[name=comment]").val();
