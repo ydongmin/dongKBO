@@ -92,7 +92,7 @@ public class BoardController {
 
         try {
             m.addAttribute("page", page);
-            m.addAttribute("pageSize", pageSize); //이게 있으면 return문 뒤에 page와 pageSize가 붙는다.
+            m.addAttribute("pageSize", pageSize);
             System.out.println("page = " + page);
 
             int rowCnt = boardService.remove(bno, writer);
@@ -105,7 +105,6 @@ public class BoardController {
             e.printStackTrace();
             rattr.addFlashAttribute("msg", "DEL_ERR");
         }
-        //그래서 따로 안적어줘도 된다.
         return "redirect:/board/list";
 //        return "redirect:/board/list?page=sdf&pageSize=sdf";
     }
@@ -114,7 +113,7 @@ public class BoardController {
     public String read(Integer bno, SearchCondition sc, Integer page, Integer pageSize, RedirectAttributes rattr, Model m) {
         try {
             BoardDto boardDto =  boardService.read(bno);
-            m.addAttribute(boardDto); //이름을 생략하면 타입의 맨앞글자만 소문자로 바꿔서 이름으로 사용
+            m.addAttribute(boardDto);
         } catch (Exception e) {
             e.printStackTrace();
             rattr.addFlashAttribute("msg", "READ_ERR");

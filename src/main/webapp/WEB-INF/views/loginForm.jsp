@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false"%>
+<%@ page import="java.net.URLDecoder"%>
 <c:set var="loginId" value="${pageContext.request.getSession(false)==null ? '' : pageContext.request.session.getAttribute('id')}"/>
 <c:set var="loginOutLink" value="${loginId=='' ? '/login/login' : '/login/logout'}"/>
 <c:set var="loginOut" value="${loginId=='' ? 'Login' : 'Logout'}"/>
@@ -92,10 +93,10 @@
   <h3 id="title">Login</h3>
   <div id="msg">
     <c:if test="${not empty param.msg}">
-      <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>
+      <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg,"UTF-8")}</i>
     </c:if>
   </div>
-  <input type="text" name="id" value="${cookie.id.value}" placeholder="이메일 입력" autofocus>
+  <input type="text" name="id" value="${cookie.id.value}" placeholder="아이디 입력" autofocus>
   <input type="password" name="pwd" placeholder="비밀번호">
   <input type="hidden" name="toURL" value="${param.toURL}">
   <button>로그인</button>
@@ -106,7 +107,7 @@
   </div>
   <script>
     function formCheck(frm) {
-      let msg ='';
+      let msg ='${param.msg}';
       if(frm.id.value.length==0) {
         setMessage('id를 입력해주세요.', frm.id);
         return false;
@@ -119,6 +120,7 @@
     }
     function setMessage(msg, element){
       document.getElementById("msg").innerHTML = ` ${'${msg}'}`;
+
       if(element) {
         element.select();
       }

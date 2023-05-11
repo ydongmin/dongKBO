@@ -77,7 +77,7 @@
   <input class="input-field" type="text" name="id" placeholder="4~12자리의 영어">
 
   <label for="">비밀번호</label>
-  <input class="input-field" type="password" name="pwd" placeholder="8~12자리의 영대소문자와 숫자 조합">
+  <input class="input-field" type="password" name="pwd" placeholder="4~12자리의 영대소문자와 숫자 조합">
 
   <label for="">이름</label>
   <input class="input-field" type="text" name="name" placeholder="홍길동">
@@ -118,8 +118,18 @@
       return false;
     }
 
-    if(frm.pwd.value.length == 0) {
-      setMessage('비밀번호를 입력해주세요.', frm.pwd);
+    if(frm.pwd.value.length<4) {
+      setMessage('비밀번호의 길이는 4이상이어야 합니다.', frm.pwd);
+      return false;
+    }
+
+    if(frm.name.value.length == 0) {
+      setMessage('이름을 입력해주세요.', frm.name);
+      return false;
+    }
+
+    if(frm.email.value.length == 0) {
+      setMessage('이메일을 입력해주세요.', frm.email);
       return false;
     }
 

@@ -39,7 +39,11 @@ public class RegisterController {
     @InitBinder
     public void toDate(WebDataBinder binder) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat df3 = new SimpleDateFormat("yyyyMMdd");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(df2, false));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(df3, false));
         binder.setValidator(new GlobalValidator()); // GlobalValidator를 WebDataBinder의 로컬 validator로 등록
         //	List<Validator> validatorList = binder.getValidators();
         //	System.out.println("validatorList="+validatorList);
