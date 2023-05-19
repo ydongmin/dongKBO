@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 <%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
     * { box-sizing:border-box; }
     form {
       width:400px;
-      height:600px;
+      height:700px;
       display : flex;
       flex-direction: column;
       align-items:center;
@@ -50,6 +51,25 @@
       border-radius: 5px;
       margin : 20px 0 30px 0;
     }
+    .id_input {
+      width: 300px;
+      height: 40px;
+      border : 1px solid rgb(89,117,196);
+      border-radius:5px;
+      padding: 0 10px;
+      margin-bottom: 10px;
+    }
+     /*중복 아이디 존재하지 않는경우*/
+    .id_input_re_1 {
+      color : green;
+      display: none;
+    }
+    /*중복아이디 존재하는 경우*/
+    .id_input_re_2 {
+      color: red;
+      display: none;
+    }
+
     .title {
       font-size : 50px;
       margin: 40px 0 30px 0;
@@ -73,8 +93,11 @@
 <form:form modelAttribute="user">
   <div class="title">Register</div>
   <div id="msg" class="msg"><form:errors path="id"/></div>
+
   <label for="">아이디</label>
-  <input class="input-field" type="text" name="id" placeholder="4~12자리의 영어">
+  <input class="id_input" type="text" name="id" placeholder="4~12자리의 영어">
+  <span class="id_input_re_1">사용 가능한 아이디입니다.</span>
+  <span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 
   <label for="">비밀번호</label>
   <input class="input-field" type="password" name="pwd" placeholder="4~12자리의 영대소문자와 숫자 조합">
@@ -147,6 +170,31 @@
       element.select();
     }
   }
+
+  //아이디 중복검사
+  $(".id_input").on("propertychange change keyup paste input", function (){
+      // console.log("keyup 테스트");
+    var id = $('.id_input').val();			// .id_input에 입력되는 값
+
+
+    $.ajax({
+      type : 'POST',
+      url : '/KBO/register/memberIdChk',
+      data : {id : id},  // '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+      success : function (result) {
+        // console.log("성공 여부" + result);
+        if(result != 'fail'){
+          $('.id_input_re_1').css("display","inline-block");
+          $('.id_input_re_2').css("display", "none");
+        } else {
+          $('.id_input_re_2').css("display","inline-block");
+          $('.id_input_re_1').css("display", "none");
+        }
+      }//success 종료
+    }); // ajax 종료
+
+  }); // function 종료
+
 </script>
 </body>
 </html>

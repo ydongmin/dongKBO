@@ -1,6 +1,7 @@
 package com.dong.KBO.dao;
 
 import com.dong.KBO.domain.User;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,11 @@ import java.util.Date;
 public class UserDaoImpl implements UserDao {
     @Autowired
     DataSource ds;
+
+    @Autowired
+    private SqlSession session;
+
+    private static String namespace = "com.dong.KBO.dao.UserMapper.";
 
     @Override
     public int deleteUser(String id) throws Exception {
@@ -133,5 +139,11 @@ public class UserDaoImpl implements UserDao {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
         }
+    }
+
+    // id 중복체크
+    @Override
+    public int idCheck(String id) throws Exception{
+        return session.selectOne(namespace+"idCheck", id);
     }
 }

@@ -9,4 +9,6 @@ public interface UserDao {
     int updateUser(User user) throws Exception;
     int count() throws Exception;
     void deleteAll() throws Exception;
+    ////////////
+    public int idCheck(String id) throws Exception;
 }

@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
@@ -78,6 +75,24 @@ public class RegisterController {
         }
 
         return "registerForm";
+    }
+
+    // id 중복체크
+    @PostMapping("/memberIdChk")
+    @ResponseBody
+    public String memberIdChK(String id) throws Exception {
+//        logger.info("memberIdChk() 진입");
+
+        int result = userDao.idCheck(id);
+
+//        System.out.println("result = " + result);
+
+        if(result != 0) {
+            return "fail"; // 중복아이디 존재
+        } else {
+            return "success";
+        }
+
     }
 
     private boolean isValid(User user) {
