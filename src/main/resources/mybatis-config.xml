@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
+        <typeAlias alias="User" type="com.dong.KBO.domain.User"/>
         <typeAlias alias="BoardDto" type="com.dong.KBO.domain.BoardDto"/>
         <typeAlias alias="CommentDto" type="com.dong.KBO.domain.CommentDto"/>
         <typeAlias alias="TeamRankDto" type="com.dong.KBO.domain.TeamRankDto"/>
