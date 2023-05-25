@@ -16,7 +16,7 @@
     * { box-sizing:border-box; }
     form {
       width:400px;
-      height:700px;
+      height:800px;
       display : flex;
       flex-direction: column;
       align-items:center;
@@ -35,12 +35,22 @@
       padding: 0 10px;
       margin-bottom: 10px;
     }
+    .email {
+      width: 300px;
+      height: 40px;
+      border : 1px solid rgb(89,117,196);
+      border-radius:5px;
+      padding: 0 10px;
+      margin : 10px 50px 10px ;
+
+    }
 
     label {
       width:300px;
       height:30px;
       margin-top :4px;
     }
+
     button {
       background-color: rgb(89,117,196);
       color : white;
@@ -68,6 +78,17 @@
     .id_input_re_2 {
       color: red;
       display: none;
+    }
+
+    .email_auth_btn {
+      background-color: rgb(89,117,196);
+      color : white;
+      width:300px;
+      height:30px;
+      font-size: 17px;
+      border : none;
+      border-radius: 5px;
+      margin : 10px 50px 10px ;
     }
 
     .title {
@@ -105,8 +126,19 @@
   <label for="">이름</label>
   <input class="input-field" type="text" name="name" placeholder="홍길동">
 
+<%--  <label for="">이메일</label>--%>
+<%--  <input class="input-field" type="text" name="email" placeholder="example@fastcampus.co.kr">--%>
+<%--  <button type="button" id="email_auth_btn" class="email_auth_btn">인증번호 받기</button>--%>
+
   <label for="">이메일</label>
-  <input class="input-field" type="text" name="email" placeholder="example@fastcampus.co.kr">
+  <div class="email_auth">
+    <input type="input-field" name="email" id="email" class="email" placeholder="example@naver.com">
+    <button type="button" id="email_auth_btn" class="email_auth_btn">인증번호 받기</button>
+  </div>
+  <input type="text" placeholder="인증번호 입력" id="email_auth_key" class ="input-field">
+
+
+
   <label for="">생일</label>
   <input class="input-field" type="text" name="birth" placeholder="2020-12-31">
 
@@ -194,6 +226,35 @@
     }); // ajax 종료
 
   }); // function 종료
+
+  ////////
+  //이메일 인증
+  ////////////
+  $( function() {
+
+    var email_auth_cd = '';
+    $(".email_auth_btn").click(function () {
+      var email = $('#email').val();
+
+      if (email == '') {
+        alert("이메일을 입력해주세요.");
+        return false;
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/KBO/register/emailAuth",
+        data: {email: email},
+        success: function (data) {
+          alert("인증번호가 발송되었습니다."+email);
+          email_auth_cd = data;
+        },
+        error: function (data) {
+          alert("메일 발송에 실패했습니다.");
+        }
+      });
+    });
+  });
 
 </script>
 </body>
